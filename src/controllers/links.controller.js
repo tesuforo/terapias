@@ -3,42 +3,46 @@ const linksCtrl = {};
 const pool = require('../database');
 
 linksCtrl.renderAddLink = (req, res) => {
-    res.render('links/add');
+    res.render('links/terapias');
 };
 
 linksCtrl.addLink = async (req, res) => {
-    const { title, description,cum,url,laboratorio,estado,medicamentoalternativo1,medicamentoalternativo2,medicamentoalternativo3,} = req.body;
+    const { title, description,url,servicio_terapia,considerarlo_malo,tipo_terapia,frecuencia,progrmacion,noprogromacionservicio,cumpleprotocolo,celular,correo} = req.body;
     const newLink = {
         title,
         description,
         url,
-        cum,
-        laboratorio,
-        estado,
-        medicamentoalternativo1,
-        medicamentoalternativo2,
-        medicamentoalternativo3,
-        user_id: req.user.id
+        servicio_terapia,
+        considerarlo_malo,
+        tipo_terapia,
+        frecuencia,
+        progrmacion,
+        noprogromacionservicio,
+        cumpleprotocolo,
+        celular,
+        correo,
+    
+        //user_id: req.user.id
     };
     await pool.query('INSERT INTO links set ?', [newLink]);
-    req.flash('success_msg', 'Medicamento Guardado Satisfactoriamente');
-    res.redirect('/links/add');
+    req.flash('success_msg', 'Encuesta Guardado Satisfactoriamente');
+    res.redirect('/links/terapias');
 }
 
 linksCtrl.renderLinks = async (req, res) => {
-    const links = await pool.query('SELECT * FROM links WHERE user_id = 20', [req.user.id]);
+    const links = await pool.query('SELECT * FROM links WHERE servicio_terapia = "regular" or servicio_terapia = "malo"');
     res.render('links/list', { links });
 }
 
 linksCtrl.renderLinks_admin = async (req, res) => {
-    const links_admin = await pool.query('SELECT * FROM links WHERE user_id = 20', [req.user.id]);
+    const links_admin = await pool.query('SELECT * FROM links WHERE frecuencia = "ningunavez"');
     res.render('links/list_todas', { links_admin });
 }
 
 
 
 linksCtrl.renderLinks_hospitalario = async (req, res) => {
-    const links_hospitalario = await pool.query('SELECT * FROM links WHERE user_id = 20', [req.user.id]);
+    const links_hospitalario = await pool.query('SELECT * FROM links WHERE progrmacion ="no"');
     res.render('links/list_hospitalario', { links_hospitalario });
 }
 
@@ -49,14 +53,17 @@ linksCtrl.renderLinks_hospitalario = async (req, res) => {
 
 
 linksCtrl.renderLinks_ocupadas = async (req, res) => {
-    const links_ocupadas = await pool.query('SELECT * FROM links WHERE user_id = 13', [req.user.id]);
+    const links_ocupadas = await pool.query('SELECT * FROM links WHERE cumpleprotocolo ="no"');
     res.render('links/list_ocupadas', { links_ocupadas });
 
 
 }
 
+
+
+
 linksCtrl.renderLinks_todas_guajira = async (req, res) => {
-    const links_todas_guajira = await pool.query('SELECT * FROM links WHERE user_id = 13', [req.user.id]);
+    const links_todas_guajira = await pool.query('SELECT * FROM links WHERE cumpleprotocolo = "no"');
     res.render('links/list_todas_guajira', { links_todas_guajira });
 
     

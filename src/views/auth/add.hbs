@@ -1,0 +1,142 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>terapias</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+ 
+
+</head>
+
+
+<div class="jumbotron text-center">
+    <h3>Bienvenido a Encuesta Satifsfacción Terapias Domiciliarias  {{user.fullname}}</h3>
+  </div>
+
+<form action="/links/add" method="POST">
+
+
+ <div class="form-group">
+  
+</div>
+
+ 
+
+<div class="form-group">
+  
+  <input  type="text" name="title" class="form-control" placeholder="Cedula" value="{{link.title}}"
+                                autofocus>
+  </div>
+
+
+  <div class="form-group">
+  
+  <input  type="text" name="url" class="form-control" placeholder="Nombres y Apellidos" value="{{link.url}}" autofocus>
+  </div>
+
+
+
+
+
+
+<div class="form-group">
+  <label class="input-group-text" for="inputGroupSelect01">El servicio de terapias domiciliarias que viene recibiendo lo considera: </label>
+  <select class="form-control" name="servicio_terapia" id="servicio_terapia">
+    <option seleccione>Escoja...</option>
+    <option value="bueno">Bueno</option>
+    <option value="regular">Regular</option>
+    <option value="malo">Malo</option>
+  </select>
+</div>
+
+
+
+ <div class="form-group">
+   <span class="input-group-text">En caso de considerarlo malo o regular:</span>
+                            <textarea name="considerarlo_malo" rows="2" class="form-control"
+                                placeholder="Explique el porque">{{link.considerarlo_malo}}</textarea>
+ </div>
+
+
+
+
+
+
+<div class="form-group">
+  <label class="input-group-text" for="inputGroupSelect02">Que tipo de terapia tiene prescrita? : </label>
+  <select class="form-control" name="tipo_terapia" id="tipo_terapia">
+    <option seleccione>Escoja...</option>
+    <option value="terapiaFisica">Terapia Fisica</option>
+    <option value="terapiadelenguaje">Terapia de Lenguaje</option>
+    <option value="terapiaocupacional">Terapia ocupacional</option>
+  </select>
+</div>
+
+<br>
+
+<div class="form-group">
+  <label class="input-group-text" for="inputGroupSelect03">Con que frecuencia recibe el servicio de terapias a la semana : </label>
+   <select class="form-control" name="frecuencia" id="frecuencia">
+    <option seleccione>Escoja...</option>
+    <option value="1a2vecessemana">1-2 veces por semana</option>
+    <option value="3masporsemana">3- mas veces por semana</option>
+    <option value="ningunavez">ninguna vez</option>
+  </select>
+</div>
+
+<br>
+
+<div class="form-group">
+  <label class="input-group-text" for="inputGroupSelect04">El terapista cumple con la programación establecida en la semana  *: </label>
+  <select class="form-control" name="progrmacion" id="progrmacion">
+
+    
+    <option value="si">SI</option>
+    <option value="no">NO</option>
+  </select>
+</div>
+
+<br>
+
+
+
+<div class="form-group">
+   <span class="input-group-text">En caso de marcar NO, por favor detalle cual servicio no está recibiendo:</span>
+                            <textarea name="noprogromacionservicio" rows="2" class="form-control"
+                                placeholder="Terapia Fisica,Terapia de Lenguaje,Terapia ocupacional">{{link.noprogromacionservicio}}</textarea>
+ </div>
+
+
+
+
+<br>
+
+<div class="form-group">
+  <label class="input-group-text" for="inputGroupSelect05">El terapista cumple con el protocolo de bioseguridad(lavado de manos ,tapabocas ,bata, guantes : </label>
+   <select class="form-control" name="cumpleprotocolo" id="cumpleprotocolo">
+
+    
+    <option value="si">SI</option>
+    <option value="no">NO</option>
+  </select>
+</div>
+<br>
+
+<hr class="my-4">
+                
+               <div class="form-group">
+                    <button class="btn btn-success btn">
+                        Guardar
+                    </button>
+                </div>
+
+
+
+</form>
+  
+    
+
+
+</html>

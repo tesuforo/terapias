@@ -6,11 +6,12 @@ const { isLoggedIn } = require('../lib/auth');
 const { renderAddLink, addLink, renderLinks, deleteLink, editLink, renderEditLink,editLink_egreso,renderEditLink_egreso,renderLinks_admin,renderLinks_ocupadas,renderLinks_sedes_disponible,renderLinks_observacion,renderLinks_hospitalario,renderLinks_todas_guajira,renderLinks_sedes_disponible_cesar,renderLinks_observacion_magdalena} = require('../controllers/links.controller')
 
 // Authorization
-router.use(isLoggedIn);
+//router.use(isLoggedIn);
 
 // Routes
-router.get('/add', renderAddLink);
+router.get('/terapias', renderAddLink);
 router.post('/add', addLink);
+
 router.get('/', isLoggedIn, renderLinks);
 router.get('/list_todas', isLoggedIn, renderLinks_admin);
 router.get('/list_magdalena', isLoggedIn, renderLinks_observacion);
